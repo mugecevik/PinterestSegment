@@ -318,12 +318,12 @@ public struct PinterestSegmentStyle {
         let indRect = CGRect(x: coverX, y: coverY, width: coverW, height: coverH)
         setIndicatorFrame(indRect)
 
-        if (cornerRadius == nil){
-            cornerRadius = coverH/2
+        if (style.cornerRadius == nil){
+            style.cornerRadius = coverH/2
         }
 
-        indicator.layer.cornerRadius = cornerRadius
-        selectedLabelsMaskView.layer.cornerRadius = cornerRadius
+        indicator.layer.cornerRadius = style.cornerRadius
+        selectedLabelsMaskView.layer.cornerRadius = style.cornerRadius
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PinterestSegment.handleTapGesture(_:)))
         addGestureRecognizer(tapGesture)
