@@ -19,6 +19,7 @@ public struct PinterestSegmentStyle {
     public var selectedTitleColor = UIColor.darkGray
     public var selectedBorderColor = UIColor.clear
     public var normalBorderColor = UIColor.clear
+    public var cornerRadius: CGFloat? 
     public var minimumWidth: CGFloat?
     public init() {}
 
@@ -317,8 +318,12 @@ public struct PinterestSegmentStyle {
         let indRect = CGRect(x: coverX, y: coverY, width: coverW, height: coverH)
         setIndicatorFrame(indRect)
 
-        indicator.layer.cornerRadius = coverH/2
-        selectedLabelsMaskView.layer.cornerRadius = coverH/2
+        if (cornerRadius == nil){
+            cornerRadius = coverH/2
+        }
+
+        indicator.layer.cornerRadius = cornerRadius
+        selectedLabelsMaskView.layer.cornerRadius = cornerRadius
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PinterestSegment.handleTapGesture(_:)))
         addGestureRecognizer(tapGesture)
